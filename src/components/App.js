@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
 import ProductDetails from './ProductDetails';
-import ReviewDetails from './ReviewDetails';
+import ReviewList from './ReviewList';
 
 class App extends Component {
   render() {
     const seller = { full_name: 'Maxwell Gordon' };
-    const reviewer = { full_name: 'Steve Godin' };
+    const reviewer1 = { full_name: 'Steve Godin' };
+    const reviewer2 = { full_name: 'Tam Kbeili' };
+    const reviews = [
+      {
+        id: 1,
+        rating: 3,
+        body: 'This is an okay product.',
+        created_at: new Date().toLocaleDateString(),
+        reviewer: reviewer1,
+      },
+      {
+        id: 3,
+        rating: 5,
+        body: 'Steve is wrong. This is a create product!',
+        created_at: new Date().toLocaleDateString(),
+        reviewer: reviewer2,
+      },
+      {
+        id: 5,
+        rating: 1,
+        body: 'I am never wrong.',
+        created_at: new Date().toLocaleDateString(),
+        reviewer: reviewer1,
+      },
+    ];
     return (
       <div className="App">
           <ProductDetails
@@ -16,13 +40,7 @@ class App extends Component {
           created_at={new Date().toLocaleDateString()}
           seller={seller}
         />
-        <ReviewDetails
-          id={1}
-          rating={3}
-          body="This is an okay product."
-          created_at={new Date().toLocaleDateString()}
-          reviewer={reviewer}
-        />
+        <ReviewList reviews={reviews} />
       </div>
     );
   }
