@@ -7,8 +7,16 @@ class ProductIndexPage extends Component {
     this.state = {
       products: [...productList],
     };
+
+    this.deleteProduct = this.deleteProduct.bind(this);
   }
 
+  deleteProduct(productId) {
+    this.setState({
+      products: this.state.products.filter(q => q.id !== productId),
+    });
+  }
+  
   render() {
     return (
       <div className="ProductIndexPage">
@@ -20,6 +28,9 @@ class ProductIndexPage extends Component {
                 <em>{product.id}</em>
               </small>{' '}
               <a href="#">{product.title}</a>
+              <button style={{ borderColor: 'red', margin: '5px 6px' }} onClick={() => this.deleteProduct(product.id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
