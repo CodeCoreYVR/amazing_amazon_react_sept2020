@@ -6,7 +6,10 @@ function ReviewList(props) {
     <ul className="ReviewList">
       {props.reviews.map(review => (
         <li key={review.id}>
-          <ReviewDetails {...review} />
+          <ReviewDetails
+            onDeleteClick={id => props.onReviewDeleteClick(id)}
+            {...review}
+          />
         </li>
       ))}
     </ul>

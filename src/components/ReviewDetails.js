@@ -9,6 +9,7 @@ function ReviewDetails(props) {
       <p>{props.body}</p>
       <p>By {props.reviewer.full_name}</p>
       <p>Created at: {props.created_at}</p>
+      <button onClick={() => props.onDeleteClick(props.id)}>Delete</button>
     </div>
   );
 }
