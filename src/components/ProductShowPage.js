@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProductDetails from './ProductDetails';
 import ReviewList from './ReviewList';
-import product from '../data/product';
+import aProduct from '../data/product';
 
-function ProductShowPage(props) {
-  return (
-    <div className="ProductShowPage">
-      <ProductDetails {...product} />
-      <ReviewList reviews={product.reviews} />
-    </div>
-  );
+class ProductShowPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      product: {
+        ...aProduct,
+      },
+    };
+  }
+  render() {
+    const { product } = this.state;
+    return (
+      <div className="ProductShowPage">
+        <ProductDetails {...product} />
+        <ReviewList reviews={product.reviews} />
+      </div>
+    );
+  }
 }
 
 export default ProductShowPage;
