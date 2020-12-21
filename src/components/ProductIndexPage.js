@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import productList from '../data/productList';
+import ProductDetails from './ProductDetails';
+import {Link} from 'react-router-dom'
 
 class ProductIndexPage extends Component {
   constructor(props) {
@@ -24,14 +26,14 @@ class ProductIndexPage extends Component {
         <ul>
           {this.state.products.map(product => (
             <li key={product.id}>
-              <small>
-                <em>{product.id}</em>
-              </small>{' '}
-              <a href="#">{product.title}</a>
-              <button style={{ borderColor: 'red', margin: '5px 6px' }} onClick={() => this.deleteProduct(product.id)}>
-                Delete
-              </button>
-            </li>
+            <small>
+              <em>{product.id}</em>
+            </small>
+            <Link key={product.id} to={`/products/${product.id}`}>{product.title}</Link>
+            <button style={{ borderColor: 'red', margin: '5px 6px' }} onClick={() => this.deleteProduct(product.id)}>
+              Delete
+            </button>
+          </li>       
           ))}
         </ul>
       </div>
@@ -40,3 +42,6 @@ class ProductIndexPage extends Component {
 }
 
 export default ProductIndexPage;
+
+
+
