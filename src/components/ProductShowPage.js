@@ -11,6 +11,7 @@ class ProductShowPage extends Component {
         ...product,
       },
     };
+    console.log(`Props ID: ${props.match.params.id}`);
     this.deleteReview = this.deleteReview.bind(this);
   }
 
