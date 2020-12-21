@@ -4,9 +4,12 @@ import ReviewDetails from './ReviewDetails';
 function ReviewList(props) {
   return (
     <ul className="ReviewList">
-      {props.reviews.map(review => (
+      {props.reviews && props.reviews.map(review => (
         <li key={review.id}>
-          <ReviewDetails {...review} />
+          <ReviewDetails
+            onDeleteClick={id => props.onReviewDeleteClick(id)}
+            {...review}
+          />
         </li>
       ))}
     </ul>
