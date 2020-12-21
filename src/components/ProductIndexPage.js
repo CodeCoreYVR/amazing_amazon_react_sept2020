@@ -2,17 +2,27 @@ import React, { Component } from 'react';
 import productList from '../data/productList';
 import ProductDetails from './ProductDetails';
 import {Link} from 'react-router-dom'
+import {Product} from './request'
 
 class ProductIndexPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [...productList],
+      products: [],
     };
 
     this.deleteProduct = this.deleteProduct.bind(this);
   }
+componentDidMount(){
+  Product.all().then(products=>{
+    this.setState((state)=>{
+      return{
+        products
+      }
 
+    })
+  })
+}
   deleteProduct(productId) {
     this.setState({
       products: this.state.products.filter(q => q.id !== productId),
